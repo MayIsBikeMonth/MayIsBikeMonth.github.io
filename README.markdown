@@ -16,7 +16,9 @@ Package management is via Poetry. To install dependencies, run `poetry install`.
 The webpage is built with [Nikola](https://getnikola.com/). To start the site locally (for development) run:
 
 ```bash
-nikola serve
+poetry run nikola serve
 ```
 
-To publish the site, run `nikola github_deploy`.
+... and then visit [http://localhost:8000](http://localhost:8000).
+
+To build the site (for publishing on github pages), run `poetry run nikola build`.

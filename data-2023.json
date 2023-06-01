@@ -1,4 +1,5 @@
 {
+  "periods": ["May 1 - May 7", "May 8 - May 14", "May 15 - May 21", "May 22 - May 28", "May 29 - May 31"],
   "leaderboard": [
     {
       "name": "Seth Herr",
@@ -25,9 +26,39 @@
           "feet": 2750
         },
         {
-          "days": 1,
-          "miles": 20,
-          "feet": 4124
+          "days": null,
+          "miles": null,
+          "feet": null
+        }
+      ]
+    },{
+      "name": "Seth Herr",
+      "stravaId": "2430215",
+      "periods": [
+        {
+          "days": 4,
+          "miles": 95.1,
+          "feet": 6945
+        },
+        {
+          "days": 2,
+          "miles": 191.1,
+          "feet": 14945
+        },
+        {
+          "days": 3,
+          "miles": 192.6,
+          "feet": 13451
+        },
+        {
+          "days": 3,
+          "miles": 59.4,
+          "feet": 2750
+        },
+        {
+          "days": null,
+          "miles": null,
+          "feet": null
         }
       ]
     }

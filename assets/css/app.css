@@ -1,0 +1,46 @@
+.align-middle { vertical-align: middle; }
+
+.text-center { text-align: center !important; }
+.text-left { text-align: left !important; }
+.text-right { text-align: right !important; }
+
+:root {
+  --gray-100: #f8f9fa;
+  --gray-200: #e9ecef;
+  --gray-300: #dee2e6;
+  --gray-400: #ced4da;
+  --gray-500: #adb5bd;
+  --gray-600: #6c757d;
+  --gray-700: #495057;
+  --gray-800: #343a40;
+  --gray-900: #212529;
+}
+
+.leaderboard-table {
+  text-align: right;
+  & td, & th {
+    border: 0px solid transparent;
+    border-color: var(--gray-300);
+    border-left-width: 1px; 
+    border-bottom-width: 1px;
+  }
+  & td:first-child, & th:first-child {
+    border-left-width: 0px;
+  }
+}
+
+.border-t-0 { border-top-width: 0 !important; }
+.border-r-3 { border-right-width: 3px !important; }
+
+.border-b-0 { border-bottom-width: 0 !important; }
+.border-b-3 { border-bottom-width: 3px !important; }
+
+.border-l-0 { border-left-width: 0 !important; }
+.border-l-1 { border-left-width: 1px !important; }
+.border-l-2 { border-left-width: 2px !important; }
+.border-l-3 { border-left-width: 3px !important; }
+
+.border-l-gray-500 { border-left-color: var(--gray-500) !important; }
+
+/* WTF bootstrap */
+.bg-transparent { --bs-table-bg-type: transparent !important; }

@@ -8,6 +8,8 @@ readme = "README.markdown"
 [tool.poetry.dependencies]
 python = "^3.11"
 nikola = "^8.2.4"
+aiohttp = "^3.8.4"
+watchdog = "^3.0.0"
 
 [build-system]
 requires = ["poetry-core"]

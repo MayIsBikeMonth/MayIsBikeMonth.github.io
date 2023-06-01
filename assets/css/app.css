@@ -16,8 +16,9 @@
   --gray-900: #212529;
 }
 
-.leaderboard-table {
+#leaderboardTable {
   text-align: right;
+  empty-cells: hide;
   & td, & th {
     border: 0px solid transparent;
     border-color: var(--gray-300);
@@ -27,6 +28,14 @@
   & td:first-child, & th:first-child {
     border-left-width: 0px;
   }
+}
+
+.hide-elevation .elevation-cell {
+  width: 0 !important;
+  display: block;
+  padding: 0 !important;
+  border-width: 0px !important;
+  overflow: hidden;
 }
 
 .border-t-0 { border-top-width: 0 !important; }

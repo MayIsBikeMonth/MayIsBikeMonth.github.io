@@ -1,1 +1,35 @@
-{"something": "A thing"}
+{
+  "leaderboard": [
+    {
+      "name": "Seth Herr",
+      "stravaId": "2430215",
+      "periods": [
+        {
+          "days": 4,
+          "miles": 95.1,
+          "feet": 6945
+        },
+        {
+          "days": 2,
+          "miles": 191.1,
+          "feet": 14945
+        },
+        {
+          "days": 3,
+          "miles": 192.6,
+          "feet": 13451
+        },
+        {
+          "days": 3,
+          "miles": 59.4,
+          "feet": 2750
+        },
+        {
+          "days": 1,
+          "miles": 20,
+          "feet": 4124
+        }
+      ]
+    }
+  ]
+}

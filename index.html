@@ -8,76 +8,99 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
   <link href="assets/css/app.css" rel="stylesheet" />
+  <script src="assets/js/app.js"></script>
 </head>
 <body>
   <div class="container mt-4">
-    <h1 class="text-center">May Is Bike Month!</h1>
-    <table class="table table-striped mt-5 leaderboard-table">
+    <h1 class="text-center">May Is Bike Month 2023!</h1>
+    <table id="leaderboardTable" class="table table-striped mt-5">
       <thead class="border-b-3 text-center">
         <tr>
-          <th rowspan="2" class="align-middle border-t-0 border-t-0">Name</th>
-          <th colspan="2" class="border-l-3 border-t-0">May 1 - May 7</th>
-          <th colspan="2" class="border-l-2 border-t-0">May 8 - May 14</th>
-          <th colspan="2" class="border-l-2 border-t-0">May 15 - May 21</th>
-          <th colspan="2" class="border-l-2 border-t-0">May 22 - May 28</th>
-          <th colspan="2" class="border-l-2 border-t-0">May 29 - May 31</th>
-          <th colspan="2" class="border-l-3 border-t-0">TOTAL</th>
+          <th rowspan="2" class="align-middle">Name</th>
+          <th colspan="3" class="border-l-3">May 1 - May 7</th>
+          <th colspan="3" class="border-l-2">May 8 - May 14</th>
+          <th colspan="3" class="border-l-2">May 15 - May 21</th>
+          <th colspan="3" class="border-l-2">May 22 - May 28</th>
+          <th colspan="3" class="border-l-2">May 29 - May 31</th>
+          <th colspan="3" class="border-l-3">TOTAL</th>
         </tr>
         <tr>
           <th class="border-l-3">Days</th>
           <th>Miles</th>
+          <th class="elevation-cell">Feet</th>
           <th class="border-l-2">Days</th>
           <th>Miles</th>
+          <th class="elevation-cell">Feet</th>
           <th class="border-l-2">Days</th>
           <th>Miles</th>
+          <th class="elevation-cell">Feet</th>
           <th class="border-l-2">Days</th>
           <th>Miles</th>
+          <th class="elevation-cell">Feet</th>
           <th class="border-l-2">Days</th>
           <th>Miles</th>
+          <th class="elevation-cell">Feet</th>
           <th class="border-l-3">Days</th>
           <th>Miles</th>
+          <th class="elevation-cell">Feet</th>
         </tr>
       </thead>
-      <tbody id="leaderboard-body">
+      <tbody id="leaderboardBody">
         <tr>
           <td class="text-left"><a href="https://www.strava.com/athletes/2430215">Seth Herr</a></td>
           <td class="border-l-3">4</td>
           <td>95.1</td>
+          <td class="elevation-cell">6,945</td>
           <td class="border-l-2">2</td>
           <td>191.1</td>
+          <td class="elevation-cell">14,945</td>
           <td class="border-l-2">3</td>
           <td>192.6</td>
+          <td class="elevation-cell">13,451</td>
           <td class="border-l-2">4</td>
           <td>59.4</td>
+          <td class="elevation-cell">2,750</td>
           <td class="border-l-2">1</td>
           <td>20</td>
+          <td class="elevation-cell">4,124</td>
           <td class="border-l-3">13</td>
           <td>576</td>
+          <td class="elevation-cell">42,249</td>
         </tr>
         <tr>
           <td class="text-left"><a href="https://www.strava.com/athletes/2430215">Seth Herr</a></td>
           <td class="border-l-3">4</td>
           <td>95.1</td>
+          <td class="elevation-cell">6,945</td>
           <td class="border-l-2">2</td>
           <td>191.1</td>
+          <td class="elevation-cell">14,945</td>
           <td class="border-l-2">3</td>
           <td>192.6</td>
+          <td class="elevation-cell">13,451</td>
           <td class="border-l-2">4</td>
           <td>59.4</td>
+          <td class="elevation-cell">2,750</td>
           <td class="border-l-2">1</td>
           <td>20</td>
+          <td class="elevation-cell">4,124</td>
           <td class="border-l-3">13</td>
           <td>576</td>
+          <td class="elevation-cell">42,249</td>
         </tr>
         <tr>
-          <td colspan="11" class="bg-transparent border-b-0">
+          <td colspan="16" class="bg-transparent border-b-0">
             <strong>Total</strong>
           </td>
-          <td class="bg-transparent border-l-3 border-b-0">13</td>
-          <td class="bg-transparent border-b-0">400</td>
+          <td id="totalDays" class="bg-transparent border-l-3 border-b-0">13</td>
+          <td id="totalMiles" class="bg-transparent border-b-0">400</td>
         </tr>
       </tbody>    
     </table>
+
+    <p class="mt-5 text-right">
+      <a id="hideElevation" class="btn btn-sm btn-outline-secondary" href="#">toggle elevation</a>
+    </p>
 
     <p class="mt-5">
       Previous years, where the competition was for the most miles and elevation in May:
@@ -89,10 +112,76 @@
   </div>
 
   <script>
-    fetch('data-2023.json')
+    // Hide elevation, because it's not in competition
+    const toggleElevation = (e = false) => {
+      e?.preventDefault()
+      document.getElementById('leaderboardTable').classList.toggle('hide-elevation')
+    }
+    document.getElementById('hideElevation').addEventListener('click', toggleElevation)
+
+    const roundOneDecimal = (x) => Math.round(x * 10) / 10
+    // https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators
+    const numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+
+    window.totals = {
+      days: 0,
+      miles: 0,
+      feet: 0,
+    }
+
+    const renderCell = (value, classes = []) => {
+      const cell = document.createElement("td");
+      cell.innerHTML = value
+      classes.forEach((i) => cell.classList.add(i))
+      return cell
+    }
+
+    const renderUserRow = (userData) => {
+      console.log(userData)
+      const row = document.createElement("tr");
+      // let rowHtml = `<td class="text-left"><a href="https://www.strava.com/athletes/${userData.strava-id}">${userData.name}</a></td>`
+      row.appendChild(renderCell(`<a href="https://www.strava.com/athletes/${userData.stravaId}">${userData.name}</a>`, ["text-left"]))
+      let totalDays = 0
+      let totalMiles = 0
+      let totalFeet = 0
+      userData.periods.forEach((period) => {
+        totalDays += period.days
+        totalMiles += period.miles
+        totalFeet += period.feet
+        row.appendChild(renderCell(period.days, ["border-l-3"]))
+        row.appendChild(renderCell(period.miles))
+        row.appendChild(renderCell(numberWithCommas(period.feet), ["elevation-cell"]))
+      })
+      window.totals.days += totalDays
+      window.totals.miles += totalMiles
+      window.totals.feet += totalFeet
+      row.appendChild(renderCell(totalDays, ["border-l-3"]))
+      row.appendChild(renderCell(roundOneDecimal(totalMiles)))
+      row.appendChild(renderCell(numberWithCommas(totalFeet), ["elevation-cell"]))
+      return row
+    }
+
+    const renderTotals = () => {
+      const row = document.createElement("tr");
+      totalCell = renderCell("<strong>Total</strong>", ["bg-transparent", "border-b-0"])
+      totalCell.setAttribute("colspan", 16)
+      row.appendChild(totalCell)
+      row.appendChild(renderCell(window.totals.days, ["bg-transparent", "border-l-3", "border-b-0"]))
+      row.appendChild(renderCell(roundOneDecimal(window.totals.miles), ["bg-transparent", "border-b-0"]))
+      row.appendChild(renderCell(numberWithCommas(window.totals.feet), ["bg-transparent", "elevation-cell", "border-b-0"]))
+      return row
+    }
+    
+    fetch('data-2023.json', { cache: "no-store" })
       .then(res => res.json())
       .then(json => {
-        console.log(json)
+        const table = document.getElementById('leaderboardBody')
+
+        json.leaderboard.forEach((userData) => {
+          const row = renderUserRow(userData)
+          table.appendChild(row)
+        })
+        table.appendChild(renderTotals())
       })
   </script>
 </body>

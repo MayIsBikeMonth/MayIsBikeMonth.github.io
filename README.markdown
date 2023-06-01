@@ -7,7 +7,7 @@ Automatically generate leaderboard for May Is Bike Month
 ---
 ## Development
 
-This is a Python project, view the current version of Python in [.tool-versions](.tool-versions) (this is the [asdf](https://asdf-vm.com/) version management file).
+This is a Python project, view the current version of Python in [.tool-versions](.tool-versions) (the [asdf](https://asdf-vm.com/) version management file).
 
 Package management is via Poetry. To install dependencies, run `poetry install`.
 

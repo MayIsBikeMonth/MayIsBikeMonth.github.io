@@ -14,7 +14,7 @@ const numDisplay = (x) => {
   return numberWithCommas(roundOneDecimal(x))
 }
 
-window.totals = {days: 0, miles: 0, feet: 0 }
+window.totals = { days: 0, miles: 0, feet: 0 }
 
 const renderCell = (value, classes = []) => {
   const cell = document.createElement("td");
@@ -33,10 +33,10 @@ const renderUserRow = (userData) => {
   userData.periods.forEach((period, index) => {
     // The first period has a thicker border
     const dayClass = [index == 0 ? "border-l-3" : "border-l-2"]
-    if (typeof (period.days) !== "undefined" && period.days !== null) { 
-        totalDays += period.days
-        totalMiles += period.miles
-        totalFeet += period.feet
+    if (typeof (period.days) !== "undefined" && period.days !== null) {
+      totalDays += period.days
+      totalMiles += period.miles
+      totalFeet += period.feet
     }
     row.appendChild(renderCell(period.days, dayClass))
     row.appendChild(renderCell(numDisplay(period.miles), ["border-l-1"]))
@@ -55,7 +55,7 @@ const renderTotals = (periodCount) => {
   const row = document.createElement("tr");
   row.classList.add("fw-bold", "bg-transparent")
   totalCell = renderCell("<strong>Total</strong>", ["bg-transparent", "border-b-0"])
-  totalCell.setAttribute("colspan", periodCount*3 + 1)
+  totalCell.setAttribute("colspan", periodCount * 3 + 1)
   row.appendChild(totalCell)
   row.appendChild(renderCell(window.totals.days, ["bg-transparent", "border-b-0", "border-l-2"]))
   row.appendChild(renderCell(numDisplay(window.totals.miles), ["bg-transparent", "border-b-0", "border-l-1"]))
@@ -63,7 +63,7 @@ const renderTotals = (periodCount) => {
   return row
 }
 
-fetch("data-2023.json", { cache: "no-store" })
+fetch("assets/data-2023.json", { cache: "no-store" })
   .then(res => res.json())
   .then(json => {
     const table = document.getElementById("leaderboardBody")

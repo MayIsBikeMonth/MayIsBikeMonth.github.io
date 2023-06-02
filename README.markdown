@@ -24,3 +24,5 @@ poetry run nikola auto -b
 ```
 
 (this will automatically open the site in your browser).
+
+(this will automatically generate some extra files too - reset the repo with `git clean -f -d` to remove them)

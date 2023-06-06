@@ -1,4 +1,4 @@
-name: May is Bike Month tests
+name: Tests
 on: [push]
 jobs:
   test-job:

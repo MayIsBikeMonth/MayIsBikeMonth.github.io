@@ -3,6 +3,7 @@ interface Totals {
   miles: number
   feet: number
 }
+
 interface UserData {
   name: string
   stravaId: string

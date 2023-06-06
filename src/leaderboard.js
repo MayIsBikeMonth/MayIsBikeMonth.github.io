@@ -67,7 +67,6 @@ fetch('assets/data-2023.json', { cache: 'no-store' })
   .then(res => res.json())
   .then(json => {
     const table = document.getElementById('leaderboardBody')
-
     json.leaderboard.forEach((userData) => {
       const row = renderUserRow(userData)
       table.appendChild(row)

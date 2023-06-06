@@ -1,11 +1,2 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-
-# C extensions
-*.so
-
-# Nikola temp files
-cache/*
-.doit.db
+/node_modules

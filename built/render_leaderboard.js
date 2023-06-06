@@ -22,7 +22,6 @@ function toggleElevation(ev) {
 // Enable the button right away, since the script is at the bottom of the page
 (_a = document.getElementById('hideElevation')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', toggleElevation);
 function enableFullscreenTableOverflow() {
-    console.log('running enableFullscreenTableOverflow');
     Array.from(document.querySelectorAll('.full-screen-table table')).forEach((el) => {
         var _a, _b;
         const table = el;
@@ -35,6 +34,7 @@ function enableFullscreenTableOverflow() {
         }
     });
 }
+// Leaderboard rendering functions below here >
 const roundOneDecimal = (x) => Math.round(x * 10) / 10;
 // https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators
 const numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');

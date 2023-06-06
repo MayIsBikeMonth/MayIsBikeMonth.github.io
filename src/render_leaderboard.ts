@@ -12,7 +12,6 @@ function toggleElevation (ev: Event): void {
 document.getElementById('hideElevation')?.addEventListener('click', toggleElevation)
 
 function enableFullscreenTableOverflow (): void {
-  console.log('running enableFullscreenTableOverflow')
   Array.from(document.querySelectorAll('.full-screen-table table')).forEach((el: Element) => {
     const table = el as HTMLTableElement
     const tableWidth = table.offsetWidth
@@ -25,16 +24,6 @@ function enableFullscreenTableOverflow (): void {
 }
 
 // Leaderboard rendering functions below here >
-interface Totals {
-  days: number
-  miles: number
-  feet: number
-}
-interface UserData {
-  name: string
-  stravaId: string
-  periods: Totals[]
-}
 
 const roundOneDecimal = (x: number): number => Math.round(x * 10) / 10
 // https://stackoverflow.com/questions/2901102/how-to-format-a-number-with-commas-as-thousands-separators

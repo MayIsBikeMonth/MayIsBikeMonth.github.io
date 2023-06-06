@@ -10,43 +10,45 @@
   <link href="assets/leaderboard.css" rel="stylesheet" />
 </head>
 <body>
-  <div class="container mt-4">
+  <div class="container-fluid mt-4">
     <h1 class="text-center">May Is Bike Month 2023!</h1>
-    <table id="leaderboardTable" class="table mt-5 hide-elevation">
-      <thead class="border-b-3 text-center">
-        <tr>
-          <th rowspan="2" class="align-middle">Name</th>
-          <th colspan="3" class="border-l-3">May 1 - May 7</th>
-          <th colspan="3" class="border-l-2">May 8 - May 14</th>
-          <th colspan="3" class="border-l-2">May 15 - May 21</th>
-          <th colspan="3" class="border-l-2">May 22 - May 28</th>
-          <th colspan="3" class="border-l-2">May 29 - May 31</th>
-          <th colspan="3" class="border-l-3">TOTAL</th>
-        </tr>
-        <tr>
-          <th class="border-l-3">Days</th>
-          <th class="border-l-1">Miles</th>
-          <th class="elevation-cell border-l-1">Feet</th>
-          <th class="border-l-2">Days</th>
-          <th class="border-l-1">Miles</th>
-          <th class="elevation-cell border-l-1">Feet</th>
-          <th class="border-l-2">Days</th>
-          <th class="border-l-1">Miles</th>
-          <th class="elevation-cell border-l-1">Feet</th>
-          <th class="border-l-2">Days</th>
-          <th class="border-l-1">Miles</th>
-          <th class="elevation-cell border-l-1">Feet</th>
-          <th class="border-l-2">Days</th>
-          <th class="border-l-1">Miles</th>
-          <th class="elevation-cell border-l-1">Feet</th>
-          <th class="border-l-3">Days</th>
-          <th class="border-l-1">Miles</th>
-          <th class="elevation-cell border-l-1">Feet</th>
-        </tr>
-      </thead>
-      <tbody id="leaderboardBody">
-      </tbody>
-    </table>
+    <div class="full-screen-table mt-5">
+      <table id="leaderboardTable" class="table hide-elevation">
+        <thead class="border-b-3 text-center">
+          <tr>
+            <th rowspan="2" class="align-middle">Name</th>
+            <th colspan="3" class="border-l-3">May 1 - May 7</th>
+            <th colspan="3" class="border-l-2">May 8 - May 14</th>
+            <th colspan="3" class="border-l-2">May 15 - May 21</th>
+            <th colspan="3" class="border-l-2">May 22 - May 28</th>
+            <th colspan="3" class="border-l-2">May 29 - May 31</th>
+            <th colspan="3" class="border-l-3">TOTAL</th>
+          </tr>
+          <tr>
+            <th class="border-l-3">Days</th>
+            <th class="border-l-1">Miles</th>
+            <th class="elevation-cell border-l-1">Feet</th>
+            <th class="border-l-2">Days</th>
+            <th class="border-l-1">Miles</th>
+            <th class="elevation-cell border-l-1">Feet</th>
+            <th class="border-l-2">Days</th>
+            <th class="border-l-1">Miles</th>
+            <th class="elevation-cell border-l-1">Feet</th>
+            <th class="border-l-2">Days</th>
+            <th class="border-l-1">Miles</th>
+            <th class="elevation-cell border-l-1">Feet</th>
+            <th class="border-l-2">Days</th>
+            <th class="border-l-1">Miles</th>
+            <th class="elevation-cell border-l-1">Feet</th>
+            <th class="border-l-3">Days</th>
+            <th class="border-l-1">Miles</th>
+            <th class="elevation-cell border-l-1">Feet</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardBody">
+        </tbody>
+      </table>
+    </div>
 
     <p class="mt-5 text-right">
       <a id="hideElevation" class="btn btn-sm btn-outline-secondary" href="#">toggle elevation</a>

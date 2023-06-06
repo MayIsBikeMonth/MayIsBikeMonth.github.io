@@ -47,6 +47,26 @@
   background: transparent;
 }
 
+/* Full screen table stuff */
+.full-screen-table-overflown {
+  /* Enable scrolling and make it edge to edge
+  separate class so it can be applied via js if applicable */
+  overflow-x: scroll;
+  margin-left: -15px;
+  margin-right: -15px;
+  padding: 5px 0;
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+}
+
+@media (max-width: 800px) {
+  .full-screen-table {
+    /* Always remove margin on full-screen-table */
+    margin-left: -15px;
+    margin-right: -15px;
+  }
+}
+
 .border-t-0 { border-top-width: 0 !important; }
 .border-t-1 { border-top-width: 1px !important; }
 .border-t-2 { border-top-width: 2px !important; }

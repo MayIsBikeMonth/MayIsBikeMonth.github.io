@@ -1,6 +1,13 @@
-// periods = []
+// Enable skipping dotenv for Github Actions
+if (process.env.DOTENV !== 'false') { require('dotenv').config() }
 
-// // https://www.strava.com/clubs/278109
+const stravaToken = process.env.STRAVA_TOKEN
+const stravaClientID = process.env.STRAVA_CLIENT_ID
+
+const periods = []
+const clubId = 278109
+
+console.log(stravaClientID)
 
 // function getUserList() {
 //   // TODO: get user list from strava mayIsBikeMonth

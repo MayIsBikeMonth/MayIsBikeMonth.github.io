@@ -1,2 +1,5 @@
 # Byte-compiled / optimized / DLL files
 /node_modules
+
+# Secrets!
+.env

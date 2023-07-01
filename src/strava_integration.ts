@@ -3,6 +3,7 @@ if (process.env.DOTENV !== 'false') { require('dotenv').config() }
 
 const stravaToken = process.env.STRAVA_TOKEN
 const stravaClientID = process.env.STRAVA_CLIENT_ID
+const stravaClientSecret = process.env.STRAVA_CLIENT_SECRET
 
 const periods = []
 const clubId = 278109 // No longer super relevant
@@ -17,6 +18,17 @@ const countedSportTypes = [
   'Wheelchair',
   'Handcycle'
 ]
+
+const authorizeUrl = `https://www.strava.com/oauth/authorize?client_id=${stravaClientID}&response_type=code&redirect_uri=http://localhost:3000&scope=activity:read_all,profile:read_all,read_all`
+console.log(authorizeUrl)
+
+export async function authorizeToken (code: string): Promise<string> {
+  const response = await fetch(`https://www.strava.com/oauth/token?client_id=${stravaClientID}&client_secret=${process.env.STRAVA_CLIENT_SECRET}&code=${code}&grant_type=authorization_code`, {
+    method: 'POST'
+  })
+  const jsonData = await response.json()
+  return jsonData
+}
 
 // Useful things from the strava API docs:
 // resource_state: indicates level of detail. Possible values: 1 -> "meta", 2 -> "summary", 3 -> "detail"
@@ -52,6 +64,13 @@ export async function makeGetRequest (endpoint: string, args: object = {}): Prom
 
 export async function getUserList () {
   const endpoint = `clubs/${clubId}/members`
+  const args = { per_page: 200 }
+  const result = await makeGetRequest(endpoint, args)
+  return result
+}
+
+export async function getClubActivities () {
+  const endpoint = `clubs/${clubId}/activities`
   const args = { per_page: 200 }
   const result = await makeGetRequest(endpoint, args)
   return result

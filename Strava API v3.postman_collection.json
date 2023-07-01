@@ -1,0 +1,1235 @@
+{
+	"info": {
+		"_postman_id": "180f91eb-1001-48c8-8579-83b031bdc301",
+		"name": "Strava API v3",
+		"description": "The [Swagger Playground](https://developers.strava.com/playground) is the easiest way to familiarize yourself with the Strava API by submitting HTTP requests and observing the responses before you write any client code. It will show what a response will look like with different endpoints depending on the authorization scope you receive from your athletes. To use the Playground, go to https://www.strava.com/settings/api and change your u201cAuthorization Callback Domainu201d to developers.strava.com. Please note, we only support Swagger 2.0. There is a known issue where you can only select one scope at a time. For more information, please check the section u201cclient codeu201d at https://developers.strava.com/docs.\n\nContact Support:\n Name: No Contact\n Email: email@example.com",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "138302",
+		"_collection_link": "https://www.postman.com/api-evangelist/workspace/strava/collection/35240-180f91eb-1001-48c8-8579-83b031bdc301?action=share&creator=138302&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "athletes/{id}",
+			"item": [
+				{
+					"name": "Get Athlete Stats",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/athletes/:id/stats?No Name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"athletes",
+								":id",
+								"stats"
+							],
+							"query": [
+								{
+									"key": "No Name",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Returns the activity stats of an athlete."
+					},
+					"response": []
+				},
+				{
+					"name": "List Athlete Routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/athletes/:id/routes?No Name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"athletes",
+								":id",
+								"routes"
+							],
+							"query": [
+								{
+									"key": "No Name",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Returns a list of the routes created by the authenticated athlete using their athlete ID. Private routes are filtered out unless requested by a token with read_all scope."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "athlete",
+			"item": [
+				{
+					"name": "Get Authenticated Athlete",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/athlete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"athlete"
+							]
+						},
+						"description": "Returns the currently authenticated athlete. Tokens with profile:read_all scope will receive a detailed athlete representation; all others will receive a summary representation."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Zones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/athlete/zones",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"athlete",
+								"zones"
+							]
+						},
+						"description": "Returns the the authenticated athlete's heart rate and power zones. Requires profile:read_all."
+					},
+					"response": []
+				},
+				{
+					"name": "List Athlete Activities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/athlete/activities?before=<integer>&after=<integer>&No Name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"athlete",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "before",
+									"value": "<integer>",
+									"description": "An epoch timestamp to use for filtering activities that have taken place before a certain time."
+								},
+								{
+									"key": "after",
+									"value": "<integer>",
+									"description": "An epoch timestamp to use for filtering activities that have taken place after a certain time."
+								},
+								{
+									"key": "No Name",
+									"value": "<string>"
+								}
+							]
+						},
+						"description": "Returns the activities of an athlete for a specific identifier. Requires activity:read. Only Me activities will be filtered out unless requested by a token with activity:read_all."
+					},
+					"response": []
+				},
+				{
+					"name": "List Athlete Clubs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/athlete/clubs?No Name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"athlete",
+								"clubs"
+							],
+							"query": [
+								{
+									"key": "No Name",
+									"value": "<string>"
+								}
+							]
+						},
+						"description": "Returns a list of the clubs whose membership includes the authenticated athlete."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "segments",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Get Segment",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/segments/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"segments",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns the specified segment. read_all scope required in order to retrieve athlete-specific segment information, or to retrieve private segments."
+							},
+							"response": []
+						},
+						{
+							"name": "Star Segment",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/segments/:id/starred",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"segments",
+										":id",
+										"starred"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Stars/Unstars the given segment for the authenticated athlete. Requires profile:write scope."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Segment Leaderboard",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/segments/:id/leaderboard?gender=<string>&age_group=<string>&weight_class=<string>&following=<boolean>&club_id=<integer>&date_range=<string>&context_entries=<integer>&No Name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"segments",
+										":id",
+										"leaderboard"
+									],
+									"query": [
+										{
+											"key": "gender",
+											"value": "<string>",
+											"description": "Filter by gender."
+										},
+										{
+											"key": "age_group",
+											"value": "<string>",
+											"description": "Summit Feature. Filter by age group."
+										},
+										{
+											"key": "weight_class",
+											"value": "<string>",
+											"description": "Summit Feature. Filter by weight class."
+										},
+										{
+											"key": "following",
+											"value": "<boolean>",
+											"description": "Filter by friends of the authenticated athlete."
+										},
+										{
+											"key": "club_id",
+											"value": "<integer>",
+											"description": "Filter by club."
+										},
+										{
+											"key": "date_range",
+											"value": "<string>",
+											"description": "Filter by date range."
+										},
+										{
+											"key": "context_entries",
+											"value": "<integer>"
+										},
+										{
+											"key": "No Name",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns the specified segment leaderboard."
+							},
+							"response": []
+						},
+						{
+							"name": "List Segment Efforts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/segments/:id/all_efforts?No Name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"segments",
+										":id",
+										"all_efforts"
+									],
+									"query": [
+										{
+											"key": "No Name",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns a set of the authenticated athlete's segment efforts for a given segment."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Segment Streams",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/segments/:id/streams?keys=<array>&key_by_type=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"segments",
+										":id",
+										"streams"
+									],
+									"query": [
+										{
+											"key": "keys",
+											"value": "<array>",
+											"description": "Desired stream types."
+										},
+										{
+											"key": "key_by_type",
+											"value": "<boolean>",
+											"description": "Must be true."
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns the given segment's streams. Requires read_all scope for private segments."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "List Starred Segments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/segments/starred?No Name=<string>&No Name=<string>&No Name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"segments",
+								"starred"
+							],
+							"query": [
+								{
+									"key": "No Name",
+									"value": "<string>"
+								},
+								{
+									"key": "No Name",
+									"value": "<string>"
+								},
+								{
+									"key": "No Name",
+									"value": "<string>"
+								}
+							]
+						},
+						"description": "List of the authenticated athlete's starred segments. Private segments are filtered out unless requested by a token with read_all scope."
+					},
+					"response": []
+				},
+				{
+					"name": "Explore segments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/segments/explore?bounds=<array>&activity_type=<string>&min_cat=<integer>&max_cat=<integer>&bounds=<array>&activity_type=<string>&min_cat=<integer>&max_cat=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"segments",
+								"explore"
+							],
+							"query": [
+								{
+									"key": "bounds",
+									"value": "<array>",
+									"description": "The latitude and longitude for two points describing a rectangular boundary for the search: [southwest corner latitutde, southwest corner longitude, northeast corner latitude, northeast corner longitude]"
+								},
+								{
+									"key": "activity_type",
+									"value": "<string>",
+									"description": "Desired activity type."
+								},
+								{
+									"key": "min_cat",
+									"value": "<integer>",
+									"description": "The minimum climbing category."
+								},
+								{
+									"key": "max_cat",
+									"value": "<integer>",
+									"description": "The maximum climbing category."
+								},
+								{
+									"key": "bounds",
+									"value": "<array>",
+									"description": "The latitude and longitude for two points describing a rectangular boundary for the search: [southwest corner latitutde, southwest corner longitude, northeast corner latitude, northeast corner longitude]"
+								},
+								{
+									"key": "activity_type",
+									"value": "<string>",
+									"description": "Desired activity type."
+								},
+								{
+									"key": "min_cat",
+									"value": "<integer>",
+									"description": "The minimum climbing category."
+								},
+								{
+									"key": "max_cat",
+									"value": "<integer>",
+									"description": "The maximum climbing category."
+								}
+							]
+						},
+						"description": "Returns the top 10 segments matching a specified query."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "segment efforts",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Get Segment Effort",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/segment_efforts/:id",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"segment_efforts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns a segment effort from an activity that is owned by the authenticated athlete."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Segment Effort Streams",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/segment_efforts/:id/streams?keys=<array>&key_by_type=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"segment_efforts",
+										":id",
+										"streams"
+									],
+									"query": [
+										{
+											"key": "keys",
+											"value": "<array>",
+											"description": "Desired stream types."
+										},
+										{
+											"key": "key_by_type",
+											"value": "<boolean>",
+											"description": "Must be true."
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns a set of streams for a segment effort completed by the authenticated athlete. Requires read_all scope."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "List Segment Efforts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/segment_efforts?segment_id=<integer>&start_date_local=<datetime>&end_date_local=<string>&No Name=<string>&No Name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"segment_efforts"
+							],
+							"query": [
+								{
+									"key": "segment_id",
+									"value": "<integer>",
+									"description": "The identifier of the segment."
+								},
+								{
+									"key": "start_date_local",
+									"value": "<datetime>",
+									"description": "ISO 8601 formatted date time."
+								},
+								{
+									"key": "end_date_local",
+									"value": "<string>",
+									"description": "ISO 8601 formatted date time."
+								},
+								{
+									"key": "No Name",
+									"value": "<string>"
+								},
+								{
+									"key": "No Name",
+									"value": "<string>"
+								}
+							]
+						},
+						"description": "Returns a set of the authenticated athletes segment efforts for a given segment.  Requires subscription."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "running races",
+			"item": [
+				{
+					"name": "List Running Races",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/running_races?year=<integer>&year=<integer>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"running_races"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "<integer>",
+									"description": "Filters the list by a given year."
+								},
+								{
+									"key": "year",
+									"value": "<integer>",
+									"description": "Filters the list by a given year."
+								}
+							]
+						},
+						"description": "Returns a list running races based on a set of search criteria."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Running Race",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/running_races/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"running_races",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Returns a running race for a given identifier."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "activities",
+			"item": [
+				{
+					"name": "{id}",
+					"item": [
+						{
+							"name": "Get Activity",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/activities/:id?include_all_efforts=<boolean>&include_all_efforts=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"activities",
+										":id"
+									],
+									"query": [
+										{
+											"key": "include_all_efforts",
+											"value": "<boolean>",
+											"description": "To include all segments efforts."
+										},
+										{
+											"key": "include_all_efforts",
+											"value": "<boolean>",
+											"description": "To include all segments efforts."
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns the given activity that is owned by the authenticated athlete. Requires activity:read for Everyone and Followers activities. Requires activity:read_all for Only Me activities."
+							},
+							"response": []
+						},
+						{
+							"name": "List Activity Laps",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/activities/:id/laps",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"activities",
+										":id",
+										"laps"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns the laps of an activity identified by an identifier. Requires activity:read for Everyone and Followers activities. Requires activity:read_all for Only Me activities."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Activity Zones",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/activities/:id/zones",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"activities",
+										":id",
+										"zones"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Summit Feature. Returns the zones of a given activity. Requires activity:read for Everyone and Followers activities. Requires activity:read_all for Only Me activities."
+							},
+							"response": []
+						},
+						{
+							"name": "List Activity Comments",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/activities/:id/comments?No Name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"activities",
+										":id",
+										"comments"
+									],
+									"query": [
+										{
+											"key": "No Name",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns the comments on the given activity. Requires activity:read for Everyone and Followers activities. Requires activity:read_all for Only Me activities."
+							},
+							"response": []
+						},
+						{
+							"name": "List Activity Kudoers",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/activities/:id/kudos?No Name=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"activities",
+										":id",
+										"kudos"
+									],
+									"query": [
+										{
+											"key": "No Name",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns the athletes who kudoed an activity identified by an identifier. Requires activity:read for Everyone and Followers activities. Requires activity:read_all for Only Me activities."
+							},
+							"response": []
+						},
+						{
+							"name": "Get Activity Streams",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/activities/:id/streams?keys=<array>&key_by_type=<boolean>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"activities",
+										":id",
+										"streams"
+									],
+									"query": [
+										{
+											"key": "keys",
+											"value": "<array>",
+											"description": "Desired stream types."
+										},
+										{
+											"key": "key_by_type",
+											"value": "<boolean>",
+											"description": "Must be true."
+										}
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": "<integer>",
+											"type": "string",
+											"description": "The identifier of the athlete. Must match the authenticated athlete."
+										}
+									]
+								},
+								"description": "Returns the given activity's streams. Requires activity:read scope. Requires activity:read_all scope for Only Me activities."
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create an Activity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/activities",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"activities"
+							]
+						},
+						"description": "Creates a manual activity for an athlete, requires activity:write scope."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "clubs/{id}",
+			"item": [
+				{
+					"name": "Get Club",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clubs/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clubs",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Returns a given club using its identifier."
+					},
+					"response": []
+				},
+				{
+					"name": "List Club Members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clubs/:id/members?No Name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clubs",
+								":id",
+								"members"
+							],
+							"query": [
+								{
+									"key": "No Name",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Returns a list of the athletes who are members of a given club."
+					},
+					"response": []
+				},
+				{
+					"name": "List Club Administrators.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clubs/:id/admins?No Name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clubs",
+								":id",
+								"admins"
+							],
+							"query": [
+								{
+									"key": "No Name",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Returns a list of the administrators of a given club."
+					},
+					"response": []
+				},
+				{
+					"name": "List Club Activities",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/clubs/:id/activities?No Name=<string>",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"clubs",
+								":id",
+								"activities"
+							],
+							"query": [
+								{
+									"key": "No Name",
+									"value": "<string>"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Retrieve recent activities from members of a specific club. The authenticated athlete must belong to the requested club in order to hit this endpoint. Pagination is supported. Athlete profile visibility is respected for all activities."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "routes/{id}",
+			"item": [
+				{
+					"name": "Get Route",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/routes/:id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"routes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Returns a route using its identifier. Requires read_all scope for private routes."
+					},
+					"response": []
+				},
+				{
+					"name": "Export Route GPX",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/routes/:id/export_gpx",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"routes",
+								":id",
+								"export_gpx"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Returns a GPX file of the route. Requires read_all scope for private routes."
+					},
+					"response": []
+				},
+				{
+					"name": "Export Route TCX",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/routes/:id/export_tcx",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"routes",
+								":id",
+								"export_tcx"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Returns a TCX file of the route. Requires read_all scope for private routes."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Route Streams",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/routes/:id/streams",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"routes",
+								":id",
+								"streams"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the athlete. Must match the authenticated athlete."
+								}
+							]
+						},
+						"description": "Returns the given route's streams. Requires read_all scope for private routes."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "uploads",
+			"item": [
+				{
+					"name": "Upload Activity",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/uploads",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"uploads"
+							]
+						},
+						"description": "Uploads a new data file to create an activity from. Requires activity:write scope."
+					},
+					"response": []
+				},
+				{
+					"name": "Get Upload",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/uploads/:uploadId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"uploads",
+								":uploadId"
+							],
+							"variable": [
+								{
+									"key": "uploadId",
+									"value": "<integer>",
+									"type": "string",
+									"description": "The identifier of the upload."
+								}
+							]
+						},
+						"description": "Returns an upload for a given identifier. Requires activity:write scope."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Equipment",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/gear/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"gear",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "<integer>",
+							"type": "string",
+							"description": "The identifier of the athlete. Must match the authenticated athlete."
+						}
+					]
+				},
+				"description": "Returns an equipment using its identifier."
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "httpswww.strava.com/api/v3",
+			"type": "string"
+		}
+	]
+}

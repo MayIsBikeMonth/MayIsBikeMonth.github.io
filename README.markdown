@@ -1,5 +1,13 @@
 # May Is Bike Month
 
+**NOTE: Handling the leaderboard via a static site doesn't work.**
+
+There isn't enough information available, without getting individual user's Strava data.
+
+See [PR#6](https://github.com/MayIsBikeMonth/MayIsBikeMonth.github.io/pull/6) for more information on the attempt.
+
+---
+
 Automatically generate leaderboard for May Is Bike Month
 
 **[mayisbikemonth.github.io](https://mayisbikemonth.github.io/)**
